@@ -1,15 +1,15 @@
+---
 resources:
-- name: springboot_starter
+- name: my-resource
   type: git
   source:
     branch: master
-    uri: https://github.com/Tegegn/springboot_starter.git
-  check_every: 60s   
-   
+    uri: https://github.com/pivotalservices/concourse-pipeline-samples.git
+
 jobs:
 - name: Run-automatically
   plan:
-  - get: springboot_starter
+  - get: my-resource
     trigger: true
   - task: do-your-task-here
     config:
@@ -26,7 +26,7 @@ jobs:
           echo "This job is automatically triggered upon any version change in the resource."
 - name: Manually-trigger-me
   plan:
-  - get: springboot_starter
+  - get: my-resource
     passed:
       - Run-automatically
     trigger: false
@@ -45,7 +45,7 @@ jobs:
           echo "Output of your manually triggered task."
 - name: Do-more-stuff-after-manual-trigger
   plan:
-  - get: springboot_starter
+  - get: my-resource
     passed:
       - Manually-trigger-me
     trigger: true
