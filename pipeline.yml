@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/Tegegn/springboot_start.git
+    uri: https://github.com/Tegegn/springboot_starter.git
   check_every: 60s  
 
 jobs:
