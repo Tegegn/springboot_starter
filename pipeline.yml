@@ -4,6 +4,7 @@ resources:
   source:
     branch: master
     uri: https://github.com/Tegegn/springboot_starter.git
+  check_every: 60s  
 
 jobs:
 - name: Auto-run
@@ -26,8 +27,7 @@ jobs:
 - name: Manually-trigger
   plan:
   - get: springboot_starter
-    passed:
-      - Run-automatically
+    passed: [Auto-run]
     trigger: false
   - task: do-your-manual-task-here
     config:
@@ -42,11 +42,10 @@ jobs:
         - -exc
         - |
           echo "Output of your manually triggered task."
-- name: Do-more-stuff-after-manual-trigger
+- name: Do-more-stuff
   plan:
   - get: springboot_starter
-    passed:
-      - Manually-trigger-me
+    passed: [Manually-trigger]
     trigger: true
   - task: do-other-tasks-here
     config:
