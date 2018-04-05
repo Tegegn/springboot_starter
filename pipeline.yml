@@ -24,11 +24,17 @@ jobs:
         - -exc
         - |
           echo "This job is automatically triggered upon any version change in the resource."
+- name: Unit Test
+  plan:
+  - get: springboot_starter
+    trigger: true
+    passed: [Auto-run]
+    
 - name: Manually-trigger
   plan:
   - get: springboot_starter
-    passed: [Auto-run]
-    trigger: false
+    passed: [Unit Test]
+    trigger: true
   - task: do-your-manual-task-here
     config:
       platform: linux
