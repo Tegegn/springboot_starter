@@ -28,7 +28,7 @@ jobs:
 - name: Manually-trigger
   plan:
   - get: springboot_starter
-    passed: [Unit Test]
+    passed: [Auto-run]
     trigger: true
   - task: do-your-manual-task-here
     config:
