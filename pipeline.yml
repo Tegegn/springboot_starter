@@ -30,7 +30,7 @@ jobs:
     trigger: true
     passed: [Auto-run]
   task: unit test  
-  file: springboot_starter/tree/master/src/test/java/com/boot/AppTest.java
+  file: springboot_starter/tree/master/src/test/java/com/boot/AppTes.java
     
 - name: Manually-trigger
   plan:
