@@ -4,7 +4,7 @@ resources:
   source:
     branch: master
     uri: https://github.com/Tegegn/springboot_starter.git
-  check_every: 60s  
+  check_every: 10s  
 
 jobs:
 - name: Auto-run
@@ -29,6 +29,8 @@ jobs:
   - get: springboot_starter
     trigger: true
     passed: [Auto-run]
+  task: unit test  
+  file: springboot_starter/tree/master/src/test/java/com/boot/AppTest.java
     
 - name: Manually-trigger
   plan:
